@@ -12,7 +12,7 @@ class ReservationsController < ApplicationController
 
     def create
         reservation = Reservation.create!(reservation_params)
-        render json reservation, status: :created
+        render json: reservation, status: :created
     end
 
     def update

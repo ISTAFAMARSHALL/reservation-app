@@ -12,9 +12,9 @@ class RestaurantsController < ApplicationController
 
     def create
         restaurant = Restaurant.create!(restaurant_params)
-        render json restaurant, status: :created
+        render json: restaurant, status: :created
     end
-
+    
     def update
         restaurant = Restaurant.find(params[:id])
         updated_restaurant = restaurant.update(restaurant_params)

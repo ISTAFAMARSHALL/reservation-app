@@ -14,5 +14,3 @@ def record_invalid(invalid)
 end
 
 end
-
-end

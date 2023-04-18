@@ -12,7 +12,7 @@ class PatronsController < ApplicationController
 
     def create
         patron = Patron.create!(patron_params)
-        render json patron, status: :created
+        render json: patron, status: :created
     end
 
     def update
