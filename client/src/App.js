@@ -1,15 +1,21 @@
 import { useEffect } from "react";
 import Login from "./pages/Login"
 import HomePage from "./pages/HomePage"
+import RestaurantList from "./pages/RestaurantList"
+import NewReservation from "./pages/NewReservation"
 
 function App() {
 
 
   return (
+    
     <>
-    <Login/>
-    <HomePage/>
-
+    <h1>Reservation App</h1>
+    {/* <Login/>
+    <HomePage/> 
+    <RestaurantList/>
+    */}
+    <NewReservation/>
     </>
   )
 }

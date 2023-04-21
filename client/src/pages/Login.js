@@ -5,7 +5,7 @@ function Login({ onLogin }) {
   
     return (
       <div>
-        <h1>Reservation App</h1>
+
         {/* {LoggedIn ? (
           <>
             <LoginForm onLogin={onLogin} />
