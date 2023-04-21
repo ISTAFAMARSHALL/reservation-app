@@ -1,34 +1,19 @@
 import { useState } from "react";
+import LoginForm from "../components/LoginForm";
+import SignUpForm from "../components/SignUpForm";
 
 function Login({ onLogin }) {
-    const [LoggedIn, SetloggedIn] = useState(false);
+    const [LoggedIn, SetloggedIn] = useState(true);
   
     return (
       <div>
 
-        {/* {LoggedIn ? (
-          <>
-            <LoginForm onLogin={onLogin} />
-            <Divider />
-            <p>
-              Don't have an account? &nbsp;
-              <Button color="secondary" onClick={() => setShowLogin(false)}>
-                Sign Up
-              </Button>
-            </p>
-          </>
+        {!LoggedIn ? (
+          <LoginForm/>
         ) : (
-          <>
-            <SignUpForm onLogin={onLogin} />
-            <Divider />
-            <p>
-              Already have an account? &nbsp;
-              <Button color="secondary" onClick={() => setShowLogin(true)}>
-                Log In
-              </Button>
-            </p>
-          </>
-        )} */}
+          <SignUpForm/>
+        )}
+
       </div>
     );
   }

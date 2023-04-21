@@ -11,11 +11,13 @@ function App() {
     
     <>
     <h1>Reservation App</h1>
-    {/* <Login/>
+    <Login/>
+    {/* 
     <HomePage/> 
     <RestaurantList/>
-    */}
+    
     <NewReservation/>
+    */}
     </>
   )
 }
