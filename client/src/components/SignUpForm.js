@@ -3,8 +3,8 @@ import React, { useState } from "react";
 function SignUpForm({ onLogin }) {
   const [username, setUsername] = useState("");
   const [name, setName] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [emailAddress, setEmailAddress] = useState("");
+  const [phone_number, setPhoneNumber] = useState("");
+  const [email_address, setEmailAddress] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [errors, setErrors] = useState([]);
@@ -21,8 +21,8 @@ function SignUpForm({ onLogin }) {
       },
       body: JSON.stringify({
         name,
-        phoneNumber,
-        emailAddress,
+        phone_number,
+        email_address,
         username,
         password,
         password_confirmation: passwordConfirmation,
@@ -30,7 +30,7 @@ function SignUpForm({ onLogin }) {
     }).then((r) => {
       setIsLoading(false);
       if (r.ok) {
-        r.json().then((user) => onLogin(user));
+        r.json().then((user) => console.log(user));
       } else {
         r.json().then((err) => setErrors(err.errors));
       }
@@ -56,7 +56,7 @@ function SignUpForm({ onLogin }) {
           type="text"
           id="phoneNumber"
         //   autoComplete="off"
-          value={phoneNumber}
+          value={phone_number}
           onChange={(e) => setPhoneNumber(e.target.value)}
         />
       </div>
@@ -67,7 +67,7 @@ function SignUpForm({ onLogin }) {
           type="text"
           id="emailAddress"
         //   autoComplete="off"
-          value={emailAddress}
+          value={email_address}
           onChange={(e) => setEmailAddress(e.target.value)}
         />
       </div>
@@ -107,7 +107,7 @@ function SignUpForm({ onLogin }) {
 
       <div>
         <button variant="fill" color="primary" type="submit">
-          {isLoading ? "Loading..." : "Login"}
+          Submit
         </button>
       </div>
 

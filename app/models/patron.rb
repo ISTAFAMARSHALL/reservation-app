@@ -1,5 +1,5 @@
 class Patron < ApplicationRecord
-    validates :name, :email_address, presence: true
+    validates :name, presence: true
     # validates :phone_number, length: { is: 14 }
 
     has_many :reservations
