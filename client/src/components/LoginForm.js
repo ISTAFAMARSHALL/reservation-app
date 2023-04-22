@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 
-function LoginForm({ onLogin }) {
+function LoginForm({ setSignedup , setCurrentUser }) {
+  
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  
 
   function handleLogin(e) {
     e.preventDefault();
-    setIsLoading(true);
     fetch("/login", {
       method: "POST",
       headers: {
@@ -16,9 +16,11 @@ function LoginForm({ onLogin }) {
       },
       body: JSON.stringify({ username, password }),
     }).then((r) => {
-      setIsLoading(false);
       if (r.ok) {
-        r.json().then((user) => onLogin(user));
+        r.json().then((user) => {
+          setCurrentUser(user)
+          setSignedup(true)
+        });
       } else {
         r.json().then((err) => setErrors(err.errors));
       }
@@ -28,7 +30,7 @@ function LoginForm({ onLogin }) {
   return (
     <form onSubmit={handleLogin}>
       <div>
-        <label htmlFor="username">Username</label>
+        <label>Username</label>
         <input
           type="text"
           id="username"
@@ -38,7 +40,7 @@ function LoginForm({ onLogin }) {
         />
       </div>
       <div>
-        <label htmlFor="password">Password</label>
+        <label>Password</label>
         <input
           type="password"
           id="password"
@@ -49,14 +51,23 @@ function LoginForm({ onLogin }) {
       </div>
       <div>
         <button variant="fill" color="primary" type="submit">
-          {isLoading ? "Loading..." : "Login"}
+          Login
         </button>
       </div>
-      <div>
+
+      {/* <div>
         {errors.map((err) => (
           <li key={err}>{err}</li>
         ))}
+      </div> */}
+
+      <br></br>
+      <div> Don't Have an Account?
+        <button onClick={()=>setSignedup(false)} variant="fill" color="primary" >
+          SignUp
+        </button>
       </div>
+
     </form>
   );
 }

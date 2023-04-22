@@ -1,6 +1,10 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 
-function SignUpForm({ onLogin }) {
+function SignUpForm({ setSignedup , setCurrentUser}) {
+  
+  const history = useHistory();
+
   const [username, setUsername] = useState("");
   const [name, setName] = useState("");
   const [phone_number, setPhoneNumber] = useState("");
@@ -8,12 +12,13 @@ function SignUpForm({ onLogin }) {
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [errors, setErrors] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  
+
 
   function handleSignUp(e) {
     e.preventDefault();
-    setErrors([]);
-    setIsLoading(true);
+
+    
     fetch("/signup", {
       method: "POST",
       headers: {
@@ -28,78 +33,75 @@ function SignUpForm({ onLogin }) {
         password_confirmation: passwordConfirmation,
       }),
     }).then((r) => {
-      setIsLoading(false);
       if (r.ok) {
-        r.json().then((user) => console.log(user));
+        r.json().then((user) => {
+          setCurrentUser(user)
+        });
       } else {
         r.json().then((err) => setErrors(err.errors));
       }
     });
   }
 
+  
+
   return (
     <form onSubmit={handleSignUp}>
       <div>
-        <label htmlFor="name">Name</label>
+        <label>Name</label>
         <input
           type="text"
           id="name"
-        //   autoComplete="off"
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
       </div>
 
       <div>
-        <label htmlFor="name">Phone Number</label>
+        <label>Phone Number</label>
         <input
           type="text"
           id="phoneNumber"
-        //   autoComplete="off"
           value={phone_number}
           onChange={(e) => setPhoneNumber(e.target.value)}
         />
       </div>
 
       <div>
-        <label htmlFor="name">Email Address</label>
+        <label>Email Address</label>
         <input
           type="text"
           id="emailAddress"
-        //   autoComplete="off"
           value={email_address}
           onChange={(e) => setEmailAddress(e.target.value)}
         />
       </div>
       
       <div>
-        <label htmlFor="username">username</label>
+        <label>username</label>
         <input
           type="text"
           id="username"
-        //   autoComplete="off"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
       </div>
 
       <div>
-        <label htmlFor="password">password</label>
+        <label>password</label>
         <input
           type="password"
           id="password"
-        //   autoComplete="current-password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
       </div>
 
       <div>
-        <label htmlFor="password">Password Confirmation</label>
+        <label>Password Confirmation</label>
         <input
           type="password"
           id="passwordConfirmation"
-        //   autoComplete="current-password"
           value={passwordConfirmation}
           onChange={(e) => setPasswordConfirmation(e.target.value)}
         />
@@ -111,11 +113,17 @@ function SignUpForm({ onLogin }) {
         </button>
       </div>
 
-      <div>
+      {/* <div>
         {errors.map((err) => (
           <li key={err}>{err}</li>
         ))}
-      </div>
+      </div> */}
+      
+      <br></br>
+          Already Have an Account?
+        <button onClick={()=>setSignedup(true)} variant="fill" color="primary" >
+          Login
+        </button>
 
     </form>
   );

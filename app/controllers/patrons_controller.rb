@@ -1,17 +1,24 @@
 class PatronsController < ApplicationController
 
+    skip_before_action :authorize, only: [:create]
+
     def index
         patrons = Patron.all 
         render json: patrons, status: :ok
     end
 
+    # def show
+    #     patron = Patron.find_by(id: session[:user_id])
+    #     render json: patron, status: :ok
+    # end
+
     def show
-        patron = Patron.find(params[:id])
-        render json: patron, status: :ok
+        render json: @current_user
     end
 
     def create
         patron = Patron.create!(patron_params)
+        session[:user_id] ||= patron.id
         render json: patron, status: :created
     end
 

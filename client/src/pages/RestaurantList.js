@@ -12,6 +12,8 @@ function RestaurantList () {
           .then((data) => Setrestaurants(data));
       }, []);
       
+      console.log(restaurants)
+      
       let displayRestaurants = restaurants.map((r) => (
         <div key={r.name}>
             <h3>{r.name}</h3>

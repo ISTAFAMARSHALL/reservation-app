@@ -14,6 +14,8 @@ gem "puma", "~> 5.0"
 
 gem "faker"
 
+gem 'bcrypt'
+
 gem 'active_model_serializers'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
