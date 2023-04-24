@@ -6,8 +6,8 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-# Restaurant.destroy_all
-# Patron.destroy_all
+Restaurant.destroy_all
+Patron.destroy_all
 
 10.times do |index|
     Restaurant.create!(name: Faker::Restaurant.unique.name, cuisine: Faker::Restaurant.type, description: Faker::Restaurant.unique.description)

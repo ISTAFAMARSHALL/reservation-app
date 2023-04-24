@@ -7,11 +7,6 @@ class PatronsController < ApplicationController
         render json: patrons, status: :ok
     end
 
-    # def show
-    #     patron = Patron.find_by(id: session[:user_id])
-    #     render json: patron, status: :ok
-    # end
-
     def show
         render json: @current_user
     end

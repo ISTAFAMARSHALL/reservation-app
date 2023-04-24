@@ -12,7 +12,6 @@ function App() {
   const [currentUser, setCurrentUser] = useState([])
 
   useEffect(() => {
-    // auto-login
     fetch("/me")
     .then((r) => {
       if (r.ok) {
@@ -40,7 +39,7 @@ function App() {
               </Route>
 
               <Route path="/">
-                <HomePage currentUser={currentUser}/>
+                <HomePage currentUser={currentUser} setCurrentUser={setCurrentUser} setLoggedIn={setLoggedIn}/>
               </Route>
 
             </Switch>

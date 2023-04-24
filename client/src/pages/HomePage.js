@@ -2,7 +2,17 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
-function HomePage ({currentUser}) {
+function HomePage ({currentUser , setCurrentUser, setLoggedIn}) {
+    
+    function handleDeleteAccount(){
+        fetch(`/patrons/${currentUser.id}`, { method: "DELETE" })
+          .then((r) => r.json())    
+            setCurrentUser(null);
+            setLoggedIn(false);
+    }
+
+    
+
 
     return (
         <>
@@ -26,6 +36,13 @@ function HomePage ({currentUser}) {
                 Guests:{r.number_of_guests}
                 </li>)))}
         </ol>
+
+        <br></br>
+          
+        <button onClick={handleDeleteAccount} variant="fill" color="primary" >
+            Delete your Account
+        </button>
+        
         </>
 
     )
