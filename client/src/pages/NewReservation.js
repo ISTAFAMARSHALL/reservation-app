@@ -1,21 +1,31 @@
-import { useState } from 'react';
+import { useEffect , useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
-function NewReservation() {
+function NewReservation({ currentUser , setCurrentUser}) {
+
+    const history = useHistory()
 
     const [reservationName, setReservationName] = useState("");
     const [reservationGuest, setReservationGuest] = useState("");
     const [reservationTime, setReservationTime] = useState("");
-    const [reservationPatronId, setReservationPatronId] = useState("");
     const [reservationRestaurantId, setReservationRestaurantId] = useState("");
+
+    const [restaurants, Setrestaurants] = useState([]);
 
 
     const newReservationInfo ={
         name: reservationName,
         number_of_guests: reservationGuest,
         time: reservationTime,
-        patron_id: reservationPatronId,
+        patron_id: currentUser.id,
         restaurant_id: reservationRestaurantId,
       }
+
+      useEffect(() => {
+          fetch("/restaurants")
+            .then((r) => r.json())
+            .then((data) => Setrestaurants(data));
+        }, []);
 
     function handleNewReservations(e) {
         e.preventDefault();
@@ -29,12 +39,14 @@ function NewReservation() {
           body: JSON.stringify(newReservationInfo)
         })
           .then((r) => r.json())
-          .then((data) => console.log(data));
+          .then((data) => {
+            setCurrentUser(data)
+            history.push("/");});
 
       }
 
   return (
-    <form id='display' >
+    <form onSubmit={handleNewReservations}>
 
     <div>
       <label>Please Enter Name of Reservation</label>
@@ -58,9 +70,9 @@ function NewReservation() {
 
     <div>
       <label>Select a Restaurant</label>
-        <select defaultValue={""} required placeholder='Enter Game Name Here' onChange={(e) => reservationRestaurantId(e.target.value)}>
+        <select defaultValue={""} required placeholder='Enter Game Name Here' onChange={(e) => setReservationRestaurantId(e.target.value)}>
             <option value=""></option> 
-            {/* {genres.map((genre) => <option value={genre.id} key={genre.id}>{`${genre.name}`}</option>)} */}
+            {restaurants.map((r) => <option value={r.id} key={r.id}>{`${r.name}`}</option>)}
         </select>
     </div>
 

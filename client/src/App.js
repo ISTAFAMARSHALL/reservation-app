@@ -20,23 +20,23 @@ function App() {
           setCurrentUser(data);
           setLoggedIn(true)});
     }});
-  }, []);
+  }, [setCurrentUser]);
 
   return (
       <div>
         {!loggedIn ? (
-            <Login setCurrentUser={setCurrentUser}/>
+            <Login setCurrentUser={setCurrentUser} setLoggedIn={setLoggedIn}/>
         ) : (
           <>
-            <NavBar setLoggedIn={setLoggedIn} setCurrentUser={setCurrentUser}/>
+            <NavBar setLoggedIn={setLoggedIn} setCurrentUser={setCurrentUser} />
             <Switch>
 
               <Route path="/new">
-                <NewReservation/>
+                <NewReservation currentUser={currentUser} setCurrentUser={setCurrentUser}/>
               </Route>
 
               <Route path="/restaurants">
-              <RestaurantList/>
+                <RestaurantList/>
               </Route>
 
               <Route path="/">

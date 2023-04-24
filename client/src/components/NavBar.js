@@ -8,23 +8,15 @@ function Navbar({setLoggedIn , setCurrentUser}) {
         fetch("/logout", { method: "DELETE" })
         setCurrentUser(null);
           setLoggedIn(false);
-      //   .then((r) => {
-      // if (r.ok) {
-      //   r.json().then((data) => {
-          
-      // }
-      //   });
     }
 
   return (
     <div id='navbar'>
       
-        {/* <NavLink className="button"
+        <NavLink className="button"
             exact 
             to="/"
-          ><button onClick={() => {
-            setGenreForm("true")
-            setGameForm("true")}} >Home</button></NavLink> */}
+          ><button>My Account</button></NavLink>
 
         <NavLink className="button"
               exact
@@ -41,7 +33,7 @@ function Navbar({setLoggedIn , setCurrentUser}) {
               to="/logout"
             ><button onClick={() => {
                 setLoggedIn(false)  
-                handleLogOut("true")}}>Logout</button>
+                handleLogOut()}}>Logout</button>
             </NavLink>
     </div>    
   )

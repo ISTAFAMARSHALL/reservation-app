@@ -11,8 +11,8 @@ class ReservationsController < ApplicationController
     end
 
     def create
-        reservation = Patron.reservations.create!(reservation_params)
-        render json: reservation, status: :created
+        reservation = @current_user.reservations.create!(reservation_params)
+        render json: @current_user, status: :created
     end
 
     def update

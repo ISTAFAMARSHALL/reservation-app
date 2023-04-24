@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import { useHistory } from 'react-router-dom';
 
-function LoginForm({ setSignedup , setCurrentUser }) {
+function LoginForm({ setLoggedIn , setCurrentUser , setSignedup}) {
+
+  const history = useHistory()
   
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -19,7 +22,8 @@ function LoginForm({ setSignedup , setCurrentUser }) {
       if (r.ok) {
         r.json().then((user) => {
           setCurrentUser(user)
-          setSignedup(true)
+          setLoggedIn(true)
+          history.push("/")
         });
       } else {
         r.json().then((err) => setErrors(err.errors));
@@ -34,7 +38,7 @@ function LoginForm({ setSignedup , setCurrentUser }) {
         <input
           type="text"
           id="username"
-        //   autoComplete="off"
+          required placeholder='Username is Case Sensitive'
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
@@ -44,7 +48,7 @@ function LoginForm({ setSignedup , setCurrentUser }) {
         <input
           type="password"
           id="password"
-        //   autoComplete="current-password"
+          required placeholder='Password is Case Sensitive'
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
@@ -55,11 +59,12 @@ function LoginForm({ setSignedup , setCurrentUser }) {
         </button>
       </div>
 
-      {/* <div>
-        {errors.map((err) => (
+      <div>
+      { errors.length <= 0 ? ("") : (
+                errors.map((err) => (
           <li key={err}>{err}</li>
-        ))}
-      </div> */}
+        )))}
+      </div>
 
       <br></br>
       <div> Don't Have an Account?

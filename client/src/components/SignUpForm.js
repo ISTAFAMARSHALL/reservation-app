@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory } from 'react-router-dom';
 
-function SignUpForm({ setSignedup , setCurrentUser}) {
-  
-  const history = useHistory();
+function SignUpForm({ setLoggedIn, setSignedup , setCurrentUser}) {
+
+  const history = useHistory()
 
   const [username, setUsername] = useState("");
   const [name, setName] = useState("");
@@ -35,7 +35,9 @@ function SignUpForm({ setSignedup , setCurrentUser}) {
     }).then((r) => {
       if (r.ok) {
         r.json().then((user) => {
-          setCurrentUser(user)
+          setCurrentUser(user);
+          setLoggedIn(true);
+          history.push("/");
         });
       } else {
         r.json().then((err) => setErrors(err.errors));
@@ -113,11 +115,12 @@ function SignUpForm({ setSignedup , setCurrentUser}) {
         </button>
       </div>
 
-      {/* <div>
-        {errors.map((err) => (
+      <div>
+        { errors.length <= 0 ? ("") : (
+                errors.map((err) => (
           <li key={err}>{err}</li>
-        ))}
-      </div> */}
+        )))}
+      </div>
       
       <br></br>
           Already Have an Account?

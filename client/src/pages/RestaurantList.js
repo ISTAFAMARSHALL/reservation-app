@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
 
 function RestaurantList () {
 
@@ -11,8 +10,6 @@ function RestaurantList () {
           .then((r) => r.json())
           .then((data) => Setrestaurants(data));
       }, []);
-      
-      console.log(restaurants)
       
       let displayRestaurants = restaurants.map((r) => (
         <div key={r.name}>
