@@ -7,6 +7,7 @@ function Login({setCurrentUser, setLoggedIn}) {
   
     return (
       <div>
+        <h1>Reservation App</h1>
         {/* <LoginForm /> */}
         {/* <SignUpForm setSignedup={setSignedup} signedup={signedup}/> */}
 

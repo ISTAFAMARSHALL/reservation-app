@@ -27,6 +27,7 @@ function App() {
             <Login setCurrentUser={setCurrentUser} setLoggedIn={setLoggedIn}/>
         ) : (
           <>
+            <h1>Reservation App</h1>
             <NavBar setLoggedIn={setLoggedIn} setCurrentUser={setCurrentUser} />
             <Switch>
 
