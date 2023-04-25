@@ -18,9 +18,8 @@ class PatronsController < ApplicationController
     end
 
     def update
-        patron = Patron.find(params[:id])
-        updated_patron = patron.update(patron_params)
-        render json: updated_patron, status: :accepted
+        @current_user.update(patron_params)
+        render json: @current_user, status: :accepted
     end
 
     def destroy

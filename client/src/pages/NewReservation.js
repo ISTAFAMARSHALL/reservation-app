@@ -42,7 +42,6 @@ function NewReservation({ currentUser , setCurrentUser}) {
           .then((data) => {
             setCurrentUser(data)
             history.push("/");});
-
       }
 
   return (
@@ -88,36 +87,7 @@ function NewReservation({ currentUser , setCurrentUser}) {
         </select>
     </div>
 
-    {/* <div>
-      <label>Completion Percentage </label>
-        <input 
-          type="text"
-          value={gameCompletionPercentage}
-          placeholder='Enter Completion Percentage Here'
-          onChange={(e) => setgameCompletionPercentage(e.target.value)}
-        />
-    </div>
-
-    <div>
-      <label>Platinum Trophy Achieved</label>
-        <select defaultValue={""} required placeholder='Enter Game Name Here' onChange={(e) => setgamePlatinum(e.target.value)}>
-            <option value=""></option>
-            <option value="False">False</option>
-            <option value="True">True</option>
-        </select>
-    </div>
-
-    <div>
-      <label>Comments </label>
-        <input 
-          type="text" 
-          value={gameComment}
-          placeholder='Enter Your Comments Here'
-          onChange={(e) => setgameComment(e.target.value)}
-    />
-    </div> */}
-
-    <button type="submit" value="Save">Save</button>
+    <button type="submit" value="Save">Create Reservation</button>
 
   </form>
   )

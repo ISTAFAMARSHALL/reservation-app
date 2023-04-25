@@ -1,25 +1,20 @@
 import React, { useState } from "react";
 import { useHistory } from 'react-router-dom';
 
-function EditForm({ setLoggedIn, setSignedup , currentUser , setCurrentUser}) {
+function EditForm({ currentUser , setCurrentUser, setEdit}) {
 
   const history = useHistory()
 
   const [username, setUsername] = useState(currentUser.username);
-  const [name, setName] = useState(currentUser.username);
+  const [name, setName] = useState(currentUser.name);
   const [phone_number, setPhoneNumber] = useState(currentUser.phone_number);
   const [email_address, setEmailAddress] = useState(currentUser.email_address);
-  const [password, setPassword] = useState("");
-  const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [errors, setErrors] = useState([]);
   
-
-
   function handleSignUp(e) {
     e.preventDefault();
 
-    
-    fetch(`/patrons/${currentUser.id}`, {
+    fetch(`patrons/${currentUser.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -30,19 +25,18 @@ function EditForm({ setLoggedIn, setSignedup , currentUser , setCurrentUser}) {
         email_address,
         username
       }),
-    }).then((r) => {
-      if (r.ok) {
-        r.json().then((user) => {
-           console.log(currentUser.id,user);
-          history.push("/");
-        });
-      } else {
-        r.json().then((err) => setErrors(err.errors));
-      }
-    });
-  }
-
-  
+    })
+      .then((r) => {
+        if(r.ok) {
+          r.json().then((user) => {
+            setEdit(false)
+            history.push("/");
+            setCurrentUser(user)
+          })
+        } else {
+          r.json().then((err) => setErrors(err.errors));
+        }})
+}
 
   return (
     <form onSubmit={handleSignUp}>
@@ -87,37 +81,17 @@ function EditForm({ setLoggedIn, setSignedup , currentUser , setCurrentUser}) {
       </div>
 
       <div>
-        <label>password</label>
-        <input
-          type="password"
-          id="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </div>
-
-      <div>
-        <label>Password Confirmation</label>
-        <input
-          type="password"
-          id="passwordConfirmation"
-          value={passwordConfirmation}
-          onChange={(e) => setPasswordConfirmation(e.target.value)}
-        />
-      </div>
-
-      <div>
         <button variant="fill" color="primary" type="submit">
           Submit
         </button>
       </div>
 
-      {/* <div>
+      <div>
         { errors.length <= 0 ? ("") : (
                 errors.map((err) => (
           <li key={err}>{err}</li>
         )))}
-      </div> */}
+      </div>
 
     </form>
   );
