@@ -1,9 +1,15 @@
 import { useState } from "react";
+import { useHistory } from 'react-router-dom';
+import {NavLink} from 'react-router-dom'
 import PatronEditForm from "../components/PatronEditForm";
+import ReservationEditForm from "../components/ReservationEditForm"
 
 function HomePage ({currentUser , setCurrentUser, setLoggedIn}) {
 
-    const [edit , setEdit] = useState(false)
+    const history = useHistory()
+
+    const [editAccount , setEdit] = useState(false)
+    const [editReservation , setEditReservation] = useState(false)
     const [view, setView] = useState(false)
     
     function handleDeleteAccount(){
@@ -26,12 +32,12 @@ function HomePage ({currentUser , setCurrentUser, setLoggedIn}) {
     return (
         <>
         <h3>Welcome! {currentUser.name}</h3>
-        {!edit ? (
+        {!editAccount ? (
             <div>
  
                  <p>{currentUser.phone_number}</p>
                  <p>{currentUser.email_address}</p>
-                    <button onClick={()=>setEdit(!edit)} variant="fill" color="primary" >
+                    <button onClick={()=>setEdit(!editAccount)} variant="fill" color="primary" >
                         Edit Account Info
                     </button>
                     
@@ -54,7 +60,9 @@ function HomePage ({currentUser , setCurrentUser, setLoggedIn}) {
                 {currentUser.reservations.map((r) => {
                 
                 return (
+                        
                     <div key={r.id}>
+
                     <li >
                     Restaurant Name:{r.restaurant.name}
                     <br></br>
@@ -62,15 +70,25 @@ function HomePage ({currentUser , setCurrentUser, setLoggedIn}) {
                     <br></br>
                     Guests:{r.number_of_guests}
                     </li>
-                    <br></br>
-                    <button onClick={handleEditAccount} variant="fill" color="primary" >
+                    
+                    {/* <NavLink exact to={`/edit_reservation/${r.id}`}> */}
+
+                    <button onClick={()=> {
+                        console.log(r.id)
+                        history.push(`/edit_reservation/${r.id}`)}} variant="fill" color="primary" >
                      Edit Reservation
                     </button>
+
+                    {/* </NavLink> */}
+
                     <button onClick={()=>handleDeleteReservation(r.id)} variant="fill" color="primary" >
                      Canel Reservation
                     </button>
                     <br></br>
+                    <br></br>
+
                     </div> 
+
                     )})
                     
                 }

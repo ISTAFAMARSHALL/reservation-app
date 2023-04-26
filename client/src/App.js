@@ -5,6 +5,7 @@ import HomePage from "./pages/HomePage"
 import RestaurantList from "./pages/RestaurantList"
 import NewReservation from "./pages/NewReservation"
 import NavBar from "./components/NavBar"
+import ReservationEditForm from "./components/ReservationEditForm"
 
 function App() {
 
@@ -30,6 +31,10 @@ function App() {
             <h1>Reservation App</h1>
             <NavBar setLoggedIn={setLoggedIn} setCurrentUser={setCurrentUser} />
             <Switch>
+
+              <Route path="/edit_reservation/:id">
+                <ReservationEditForm currentUser={currentUser} setCurrentUser={setCurrentUser} />
+              </Route>
 
               <Route path="/new">
                 <NewReservation currentUser={currentUser} setCurrentUser={setCurrentUser}/>

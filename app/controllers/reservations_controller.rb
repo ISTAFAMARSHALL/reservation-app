@@ -16,9 +16,9 @@ class ReservationsController < ApplicationController
     end
 
     def update
-        # reservation = Reservation.find(params[:id])
-        updated_reservation = @current_user.reservations.update(reservation_params)
-        render json: updated_reservation, status: :accepted
+        reservation = Reservation.find(params[:id])
+        updated_reservation = Reservation.update!(reservation_params)
+        render json: @current_user, status: :accepted
     end
 
     def destroy
