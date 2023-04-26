@@ -1,15 +1,26 @@
 import { useState } from "react";
-import Editform from "../components/EditForm";
+import PatronEditForm from "../components/PatronEditForm";
 
 function HomePage ({currentUser , setCurrentUser, setLoggedIn}) {
 
     const [edit , setEdit] = useState(false)
+    const [view, setView] = useState(false)
     
     function handleDeleteAccount(){
         fetch(`/patrons/${currentUser.id}`, { method: "DELETE" })
           .then((r) => r.json())    
             setCurrentUser(null);
             setLoggedIn(false);
+    }
+
+    function handleDeleteReservation(e){
+        fetch(`/reservations/${e}`, { method: "DELETE" })
+          .then((r) => r.json())
+          .then((user) => setCurrentUser(user))    
+    }
+
+    function handleEditAccount(){
+        
     }
 
     return (
@@ -26,7 +37,7 @@ function HomePage ({currentUser , setCurrentUser, setLoggedIn}) {
                     
             </div>
         ) : (
-            <Editform currentUser={currentUser} setCurrentUser={setCurrentUser} setEdit={setEdit}/>
+            <PatronEditForm currentUser={currentUser} setCurrentUser={setCurrentUser} setEdit={setEdit}/>
         )}
         
         <br></br>
@@ -42,24 +53,45 @@ function HomePage ({currentUser , setCurrentUser, setLoggedIn}) {
                 
                 {currentUser.reservations.map((r) => {
                 
-                    const restaurants = currentUser.restaurants.filter((e) => {
-                        if (e.id == r.restaurant_id) {
-                            return e.name
-                                } else {
-                            return ""
-                   }} )
-                    
                 return (
                     <div key={r.id}>
                     <li >
-                    Restaurant Name:{restaurants[0].name}
+                    Restaurant Name:{r.restaurant.name}
                     <br></br>
                     Dinner Time:{r.time}
                     <br></br>
                     Guests:{r.number_of_guests}
                     </li>
                     <br></br>
-                    </div>)})}
+                    <button onClick={handleEditAccount} variant="fill" color="primary" >
+                     Edit Reservation
+                    </button>
+                    <button onClick={()=>handleDeleteReservation(r.id)} variant="fill" color="primary" >
+                     Canel Reservation
+                    </button>
+                    <br></br>
+                    </div> 
+                    )})
+                    
+                }
+                <br></br>
+                    <button onClick={()=>setView(!view)} variant="fill" color="primary" >
+                        View Your Restaurant List
+                    </button>
+                { !view ? ( "" ): 
+                    (currentUser.restaurants.map((r) => {
+                        return (
+                            <div key={r.id}>
+                            <br></br>
+                                <ol>
+                                    <h3>{r.name}</h3>
+                                    <h4>Speciality - {r.cuisine}</h4>
+                                    <p>{r.description}</p>
+                                </ol>
+                            <br></br>
+                            </div>)})
+                )}
+
             </>
                 )}
         </ol>

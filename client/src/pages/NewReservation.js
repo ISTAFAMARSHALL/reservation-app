@@ -11,7 +11,7 @@ function NewReservation({ currentUser , setCurrentUser}) {
     const [reservationRestaurantId, setReservationRestaurantId] = useState("");
 
     const [restaurants, Setrestaurants] = useState([]);
-
+    const [errors, setErrors] = useState([])
 
     const newReservationInfo ={
         name: reservationName,
@@ -30,18 +30,22 @@ function NewReservation({ currentUser , setCurrentUser}) {
     function handleNewReservations(e) {
         e.preventDefault();
 
-
         fetch("reservations", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(newReservationInfo)
-        })
-          .then((r) => r.json())
-          .then((data) => {
-            setCurrentUser(data)
-            history.push("/");});
+        }).then((response) => {
+          if (response.ok) {
+            response.json().then((user) => {
+              setCurrentUser(user)
+              history.push("/")
+            });
+          } else {
+            response.json().then((e) => setErrors(e.errors));
+          }
+        });
       }
 
   return (
@@ -69,7 +73,7 @@ function NewReservation({ currentUser , setCurrentUser}) {
 
     <div>
       <label>Select a Restaurant</label>
-        <select defaultValue={""} required placeholder='Enter Game Name Here' onChange={(e) => setReservationRestaurantId(e.target.value)}>
+        <select defaultValue={""} onChange={(e) => setReservationRestaurantId(e.target.value)}>
             <option value=""></option> 
             {restaurants.map((r) => <option value={r.id} key={r.id}>{`${r.name}`}</option>)}
         </select>
@@ -86,6 +90,14 @@ function NewReservation({ currentUser , setCurrentUser}) {
             <option value="5">5</option>
         </select>
     </div>
+
+    <div>
+        { errors.length <= 0 ? ("") : (
+            errors.map((err) => (
+              <li key={err}>{err}</li>
+        )))}
+    </div>
+
 
     <button type="submit" value="Save">Create Reservation</button>
 

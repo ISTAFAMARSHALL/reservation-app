@@ -18,15 +18,15 @@ function LoginForm({ setLoggedIn , setCurrentUser , setSignedup}) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ username, password }),
-    }).then((r) => {
-      if (r.ok) {
-        r.json().then((user) => {
+    }).then((response) => {
+      if (response.ok) {
+        response.json().then((user) => {
           setCurrentUser(user)
           setLoggedIn(true)
           history.push("/")
         });
       } else {
-        r.json().then((err) => setErrors(err.errors));
+        response.json().then((e) => setErrors(e.errors));
       }
     });
   }

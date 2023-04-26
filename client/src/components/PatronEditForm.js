@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from 'react-router-dom';
 
-function EditForm({ currentUser , setCurrentUser, setEdit}) {
+function PatronEditForm({ currentUser , setCurrentUser, setEdit}) {
 
   const history = useHistory()
 
@@ -25,17 +25,17 @@ function EditForm({ currentUser , setCurrentUser, setEdit}) {
         email_address,
         username
       }),
-    })
-      .then((r) => {
-        if(r.ok) {
-          r.json().then((user) => {
-            setEdit(false)
-            history.push("/");
-            setCurrentUser(user)
-          })
-        } else {
-          r.json().then((err) => setErrors(err.errors));
-        }})
+    }).then((response) => {
+      if (response.ok) {
+        response.json().then((user) => {
+          setEdit(false)
+          history.push("/");
+          setCurrentUser(user)
+        });
+      } else {
+        response.json().then((e) => setErrors(e.errors));
+      }
+    });
 }
 
   return (
@@ -97,4 +97,4 @@ function EditForm({ currentUser , setCurrentUser, setEdit}) {
   );
 }
 
-export default EditForm;
+export default PatronEditForm;

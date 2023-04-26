@@ -18,7 +18,7 @@ class PatronsController < ApplicationController
     end
 
     def update
-        @current_user.update(patron_params)
+        @current_user.update!(patron_params)
         render json: @current_user, status: :accepted
     end
 

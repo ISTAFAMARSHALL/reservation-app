@@ -1,26 +1,21 @@
 import React, { useState } from "react";
 import { useHistory } from 'react-router-dom';
 
-function SignUpForm({ setLoggedIn, setSignedup , setCurrentUser}) {
+function ReservationEditForm({ currentUser , setCurrentUser, setEdit}) {
 
   const history = useHistory()
 
-  const [username, setUsername] = useState("");
-  const [name, setName] = useState("");
-  const [phone_number, setPhoneNumber] = useState("");
-  const [email_address, setEmailAddress] = useState("");
-  const [password, setPassword] = useState("");
-  const [passwordConfirmation, setPasswordConfirmation] = useState("");
+  const [username, setUsername] = useState(currentUser.username);
+  const [name, setName] = useState(currentUser.name);
+  const [phone_number, setPhoneNumber] = useState(currentUser.phone_number);
+  const [email_address, setEmailAddress] = useState(currentUser.email_address);
   const [errors, setErrors] = useState([]);
   
-
-
   function handleSignUp(e) {
     e.preventDefault();
 
-    
-    fetch("/signup", {
-      method: "POST",
+    fetch(`patrons/${currentUser.id}`, {
+      method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },
@@ -28,24 +23,20 @@ function SignUpForm({ setLoggedIn, setSignedup , setCurrentUser}) {
         name,
         phone_number,
         email_address,
-        username,
-        password,
-        password_confirmation: passwordConfirmation,
+        username
       }),
     }).then((response) => {
       if (response.ok) {
         response.json().then((user) => {
-          setCurrentUser(user);
-          setLoggedIn(true);
+          setEdit(false)
           history.push("/");
+          setCurrentUser(user)
         });
       } else {
         response.json().then((e) => setErrors(e.errors));
       }
     });
-  }
-
-  
+}
 
   return (
     <form onSubmit={handleSignUp}>
@@ -90,26 +81,6 @@ function SignUpForm({ setLoggedIn, setSignedup , setCurrentUser}) {
       </div>
 
       <div>
-        <label>password</label>
-        <input
-          type="password"
-          id="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </div>
-
-      <div>
-        <label>Password Confirmation</label>
-        <input
-          type="password"
-          id="passwordConfirmation"
-          value={passwordConfirmation}
-          onChange={(e) => setPasswordConfirmation(e.target.value)}
-        />
-      </div>
-
-      <div>
         <button variant="fill" color="primary" type="submit">
           Submit
         </button>
@@ -121,15 +92,9 @@ function SignUpForm({ setLoggedIn, setSignedup , setCurrentUser}) {
           <li key={err}>{err}</li>
         )))}
       </div>
-      
-      <br></br>
-          Already Have an Account?
-        <button onClick={()=>setSignedup(true)} variant="fill" color="primary" >
-          Login
-        </button>
 
     </form>
   );
 }
 
-export default SignUpForm;
+export default ReservationEditForm;

@@ -22,9 +22,9 @@ class ReservationsController < ApplicationController
     end
 
     def destroy
-        # reservation = Reservation.find(params[:id])
-        @current_user.reservations.destroy
-        head :no_content
+        reservation = Reservation.find(params[:id])
+        reservation.destroy
+        render json: @current_user
     end
 
     private
