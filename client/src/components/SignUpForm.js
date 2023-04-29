@@ -17,7 +17,6 @@ function SignUpForm({ setLoggedIn, setSignedup , setCurrentUser}) {
 
   function handleSignUp(e) {
     e.preventDefault();
-
     
     fetch("/signup", {
       method: "POST",
@@ -44,8 +43,6 @@ function SignUpForm({ setLoggedIn, setSignedup , setCurrentUser}) {
       }
     });
   }
-
-  
 
   return (
     <form onSubmit={handleSignUp}>
@@ -114,6 +111,7 @@ function SignUpForm({ setLoggedIn, setSignedup , setCurrentUser}) {
           Submit
         </button>
       </div>
+
 
       <div>
         { errors.length <= 0 ? ("") : (

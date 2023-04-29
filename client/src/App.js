@@ -1,5 +1,6 @@
 import { useEffect , useState} from "react";
 import { Route, Switch} from "react-router-dom"
+import { useHistory } from 'react-router-dom';
 import Login from "./pages/Login"
 import HomePage from "./pages/HomePage"
 import RestaurantList from "./pages/RestaurantList"
@@ -11,6 +12,9 @@ function App() {
 
   const [loggedIn, setLoggedIn] = useState(false)
   const [currentUser, setCurrentUser] = useState([])
+  const [newR, setNewR] = useState([])
+
+  const history = useHistory()
 
   useEffect(() => {
     fetch("/me")
@@ -22,6 +26,11 @@ function App() {
     }});
   }, [setCurrentUser]);
 
+  function handle_EditReservation(r){
+    history.push(`/edit_reservation/`)
+    setNewR(r)
+}
+
   return (
       <div>
         {!loggedIn ? (
@@ -32,8 +41,8 @@ function App() {
             <NavBar setLoggedIn={setLoggedIn} setCurrentUser={setCurrentUser} />
             <Switch>
 
-              <Route path="/edit_reservation/:id">
-                <ReservationEditForm currentUser={currentUser} setCurrentUser={setCurrentUser} />
+              <Route path="/edit_reservation/">
+                <ReservationEditForm currentUser={currentUser} setCurrentUser={setCurrentUser} newR={newR}/>
               </Route>
 
               <Route path="/new">
@@ -45,7 +54,7 @@ function App() {
               </Route>
 
               <Route path="/">
-                <HomePage currentUser={currentUser} setCurrentUser={setCurrentUser} setLoggedIn={setLoggedIn}/>
+                <HomePage currentUser={currentUser} setCurrentUser={setCurrentUser} setLoggedIn={setLoggedIn} handle_EditReservation={handle_EditReservation}/>
               </Route>
 
             </Switch>

@@ -1,42 +1,44 @@
 import { useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 
-function ReservationEditForm({ currentUser , setCurrentUser}) {
+function ReservationEditForm({ currentUser , setCurrentUser , newR}) {
+
+  // console.log(newR.id)
 
     const history = useHistory()
 
-    const reservation_id = useParams()
+  //   const reservation_id = useParams()
 
-    let reservation_to_update = currentUser.reservations.filter((r) => r.id == reservation_id.id)
+    // let reservation_to_update = currentUser.reservations.filter((r) => r.id == reservation_id.id)
 
 
-    const [reservationName, setReservationName] = useState(reservation_to_update[0].name);
-    const [reservationGuest, setReservationGuest] = useState(reservation_to_update[0].number_of_guests);
-    const [reservationTime, setReservationTime] = useState(reservation_to_update[0].time);
+    const [name, setReservationName] = useState(newR.name);
+    const [number_of_guests, setReservationGuest] = useState(newR.number_of_guests);
+    const [time, setReservationTime] = useState(newR.time);
 
 
 
     const [errors, setErrors] = useState([])
 
-    const newReservationInfo ={
-        name: reservationName,
-        number_of_guests: reservationGuest,
-        time: reservationTime,
-      }
+    // const newReservationInfo ={
+    //     name: reservationName,
+    //     number_of_guests: reservationGuest,
+    //     time: reservationTime,
+    //   }
  
     function handleEditReservation(e) {
       
         e.preventDefault();
         
-        fetch(`/reservations/${reservation_to_update[0].id}`, {
+        fetch(`/reservations/${newR.id}`, {
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            name: reservationName,
-            number_of_guests: reservationGuest,
-            time: reservationTime,
+            name,
+            number_of_guests,
+            time,
           }),
         }).then((response) => {
           if (response.ok) {
@@ -58,7 +60,7 @@ function ReservationEditForm({ currentUser , setCurrentUser}) {
       <label>Please Enter Name of Reservation</label>
         <input 
           type="text"
-          value={reservationName}
+          value={name}
           placeholder='Please Enter Name of Reservation'
           onChange={(e) => setReservationName(e.target.value)}
         />
@@ -68,7 +70,7 @@ function ReservationEditForm({ currentUser , setCurrentUser}) {
       <label>Please Enter the Number of Guests</label>
         <input 
           type="text"
-          value={reservationGuest}
+          value={number_of_guests}
           placeholder='Please Enter the Number of Guests'
           onChange={(e) => setReservationGuest(e.target.value)}
         />
@@ -84,7 +86,7 @@ function ReservationEditForm({ currentUser , setCurrentUser}) {
 
     <div>
       <label>Select Reservation Time</label>
-        <select value={reservationTime} required placeholder='Select Reservation Time' onChange={(e) => setReservationTime(e.target.value)}>
+        <select value={time} required placeholder='Select Reservation Time' onChange={(e) => setReservationTime(e.target.value)}>
             <option value=""></option>
             <option value="1">1</option>
             <option value="2">2</option>

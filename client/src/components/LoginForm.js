@@ -31,9 +31,10 @@ function LoginForm({ setLoggedIn , setCurrentUser , setSignedup}) {
     });
   }
 
+
   return (
     <form onSubmit={handleLogin}>
-      <div>
+      <div > 
         <label>Username</label>
         <input
           type="text"

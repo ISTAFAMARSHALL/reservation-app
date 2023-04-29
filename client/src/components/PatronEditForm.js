@@ -13,7 +13,6 @@ function PatronEditForm({ currentUser , setCurrentUser, setEdit}) {
   
   function handleSignUp(e) {
     e.preventDefault();
-
     fetch(`patrons/${currentUser.id}`, {
       method: "PATCH",
       headers: {

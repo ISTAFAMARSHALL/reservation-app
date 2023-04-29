@@ -4,7 +4,7 @@ import {NavLink} from 'react-router-dom'
 import PatronEditForm from "../components/PatronEditForm";
 import ReservationEditForm from "../components/ReservationEditForm"
 
-function HomePage ({currentUser , setCurrentUser, setLoggedIn}) {
+function HomePage ({currentUser , setCurrentUser, setLoggedIn, handle_EditReservation}) {
 
     const history = useHistory()
 
@@ -25,9 +25,11 @@ function HomePage ({currentUser , setCurrentUser, setLoggedIn}) {
           .then((user) => setCurrentUser(user))    
     }
 
-    function handleEditAccount(){
+    // function handle_EditReservation(r){
         
-    }
+    //         console.log(r)
+    //         history.push(`/edit_reservation/${r.id}`)
+    // }
 
     return (
         <>
@@ -73,9 +75,7 @@ function HomePage ({currentUser , setCurrentUser, setLoggedIn}) {
                     
                     {/* <NavLink exact to={`/edit_reservation/${r.id}`}> */}
 
-                    <button onClick={()=> {
-                        console.log(r.id)
-                        history.push(`/edit_reservation/${r.id}`)}} variant="fill" color="primary" >
+                    <button onClick={() => handle_EditReservation(r)} variant="fill" color="primary" >
                      Edit Reservation
                     </button>
 
