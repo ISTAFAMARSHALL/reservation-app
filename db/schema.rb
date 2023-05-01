@@ -28,6 +28,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_18_011935) do
   create_table "reservations", force: :cascade do |t|
     t.string "name"
     t.integer "number_of_guests"
+    t.string "day"
     t.string "time"
     t.integer "patron_id"
     t.integer "restaurant_id"

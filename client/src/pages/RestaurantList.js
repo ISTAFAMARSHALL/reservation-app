@@ -21,6 +21,7 @@ function RestaurantList () {
       
       let displayRestaurants = restaurants.map((r) => (
         <div key={r.name}>
+            
             <br></br>
             <h3>{r.name}</h3>
             <p>{r.cuisine}</p>
@@ -31,6 +32,13 @@ function RestaurantList () {
 
       return (
         <>
+            <br></br>
+            <br></br>
+            <h5>View</h5>
+            <h5>Restaurants</h5>
+            <h5>Below</h5>
+            <br></br>
+            <br></br>
             {displayRestaurants}
 
             <div>

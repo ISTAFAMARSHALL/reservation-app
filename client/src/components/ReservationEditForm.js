@@ -15,6 +15,7 @@ function ReservationEditForm({ currentUser , setCurrentUser , newR}) {
     const [name, setReservationName] = useState(newR.name);
     const [number_of_guests, setReservationGuest] = useState(newR.number_of_guests);
     const [time, setReservationTime] = useState(newR.time);
+    const [day, setReservationDay] = useState(newR.day)
 
 
 
@@ -38,6 +39,7 @@ function ReservationEditForm({ currentUser , setCurrentUser , newR}) {
           body: JSON.stringify({
             name,
             number_of_guests,
+            day,
             time,
           }),
         }).then((response) => {
@@ -76,23 +78,30 @@ function ReservationEditForm({ currentUser , setCurrentUser , newR}) {
         />
     </div>
 
-    {/* <div>
-      <label>Select a Restaurant</label>
-        <select defaultValue={""} onChange={(e) => setReservationRestaurantId(e.target.value)}>
-            <option value=""></option> 
-            {restaurants.map((r) => <option value={r.id} key={r.id}>{`${r.name}`}</option>)}
+    <div>
+      <label>Select Reservation Day</label>
+        <select value={day} required placeholder='Select Reservation Day' onChange={(e) => setReservationDay(e.target.value)}>
+            <option value=""></option>
+            <option value="Monday">Monday</option>
+            <option value="Tuesday">Tuesday</option>
+            <option value="Wednesday">Wednesday</option>
+            <option value="Thursday">Thursday</option>
+            <option value="Friday">Friday</option>
+            <option value="Saturday">Saturday</option>
+            <option value="SSunday">Sunday</option>
         </select>
-    </div> */}
+    </div>
 
     <div>
       <label>Select Reservation Time</label>
         <select value={time} required placeholder='Select Reservation Time' onChange={(e) => setReservationTime(e.target.value)}>
             <option value=""></option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
+            <option value="4 PM">4 PM</option>
+            <option value="5 PM">5 PM</option>
+            <option value="6 PM">6 PM</option>
+            <option value="7 PM">7 PM</option>
+            <option value="8 PM">8 PM</option>
+            <option value="9 PM">9 PM</option>
         </select>
     </div>
 
@@ -104,7 +113,7 @@ function ReservationEditForm({ currentUser , setCurrentUser , newR}) {
     </div>
 
 
-    <button type="submit" value="Save">Create Reservation</button>
+    <button type="submit" value="Save">Update Reservation</button>
 
   </form>
   )

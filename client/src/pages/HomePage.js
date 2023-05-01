@@ -32,11 +32,10 @@ function HomePage ({currentUser , setCurrentUser, setLoggedIn, handle_EditReserv
     // }
 
     return (
-        <>
+        <main>
         <h3>Welcome! {currentUser.name}</h3>
         {!editAccount ? (
             <div>
- 
                  <p>{currentUser.phone_number}</p>
                  <p>{currentUser.email_address}</p>
                     <button onClick={()=>setEdit(!editAccount)} variant="fill" color="primary" >
@@ -66,20 +65,19 @@ function HomePage ({currentUser , setCurrentUser, setLoggedIn, handle_EditReserv
                     <div key={r.id}>
 
                     <li >
-                    Restaurant Name:{r.restaurant.name}
+                    Restaurant Name: {r.restaurant.name}
                     <br></br>
-                    Dinner Time:{r.time}
+                    Dinner Day: {r.day}
                     <br></br>
-                    Guests:{r.number_of_guests}
+                    Dinner Time: {r.time}
+                    <br></br>
+                    Guests: {r.number_of_guests}
                     </li>
-                    
-                    {/* <NavLink exact to={`/edit_reservation/${r.id}`}> */}
+                    <br></br>
 
                     <button onClick={() => handle_EditReservation(r)} variant="fill" color="primary" >
                      Edit Reservation
                     </button>
-
-                    {/* </NavLink> */}
 
                     <button onClick={()=>handleDeleteReservation(r.id)} variant="fill" color="primary" >
                      Canel Reservation
@@ -120,7 +118,7 @@ function HomePage ({currentUser , setCurrentUser, setLoggedIn, handle_EditReserv
             Delete your Account & All Reservations
         </button>
         
-        </>
+        </main>
 
     )
 }

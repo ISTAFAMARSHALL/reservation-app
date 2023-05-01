@@ -108,7 +108,7 @@ function SignUpForm({ setLoggedIn, setSignedup , setCurrentUser}) {
 
       <div>
         <button variant="fill" color="primary" type="submit">
-          Submit
+          Creat Account
         </button>
       </div>
 

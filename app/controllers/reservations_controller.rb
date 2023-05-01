@@ -30,7 +30,7 @@ class ReservationsController < ApplicationController
     private
 
     def reservation_params
-        params.permit(:name, :number_of_guests, :time, :patron_id, :restaurant_id )
+        params.permit(:name, :number_of_guests, :day, :time, :patron_id, :restaurant_id )
     end
     
 end
