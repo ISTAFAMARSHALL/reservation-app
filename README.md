@@ -1,9 +1,11 @@
 # Reservation App
 
+![Reservation App - Flatiron School: Phase 4 Project](https://i.makeagif.com/media/5-02-2023/sMIB9P.gif)
+
 ## Description
 
 The Reservation App is used to make reservations at local restaurants.
-Create an accont to make and edit reservations at great restaurants near you!
+Create an account to make and edit reservations at great restaurants near you!
 
 ### Installation
 

@@ -10,7 +10,7 @@ function SignUpForm({ setLoggedIn, setSignedup , setCurrentUser}) {
   const [phone_number, setPhoneNumber] = useState("");
   const [email_address, setEmailAddress] = useState("");
   const [password, setPassword] = useState("");
-  const [passwordConfirmation, setPasswordConfirmation] = useState("");
+  const [password_confirmation, setPasswordConfirmation] = useState("");
   const [errors, setErrors] = useState([]);
   
 
@@ -29,11 +29,7 @@ function SignUpForm({ setLoggedIn, setSignedup , setCurrentUser}) {
         email_address,
         username,
         password,
-<<<<<<< HEAD
         password_confirmation
-=======
-        password_confirmation: passwordConfirmation,
->>>>>>> 647d6219ff19f09b53a1dd11b4c766a16353ddb7
       }),
     }).then((response) => {
       if (response.ok) {
@@ -111,7 +107,7 @@ function SignUpForm({ setLoggedIn, setSignedup , setCurrentUser}) {
         <input
           type="password"
           id="passwordConfirmation"
-          value={passwordConfirmation}
+          value={password_confirmation}
           onChange={(e) => setPasswordConfirmation(e.target.value)}
         />
       </div>
