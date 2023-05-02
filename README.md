@@ -1,24 +1,42 @@
-# README
+# Reservation App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Description
 
-Things you may want to cover:
+The Reservation App is used to make reservations at local restaurants.
+Create an accont to make and edit reservations at great restaurants near you!
 
-* Ruby version
+### Installation
 
-* System dependencies
+This project was created with rails and deplyed using Render
 
-* Configuration
+1. Fork and clone this repo
 
-* Database creation
+2. Open project directory
 
-* Database initialization
+    In the project directory, you can run:
+        a. `bundle install`
+        b. `bundle exec rails db: migrate`
+        c. `bundle exec rails db: seed`
+        d. `bundle exec rails server`
 
-* How to run the test suite
+This will run your server on port
+[http://localhost:3000](http://localhost:3000).
 
-* Services (job queues, cache servers, search engines, etc.)
+4. Open new terminal, run:
+        a. `npm start --prefix client`
 
-* Deployment instructions
+5. Open [http://localhost:4000](http://localhost:4000) to view it in your browser.
 
-* ...
+### Usage
+
+Organize and rate your favorite beauty products within one app.
+
+### Contributing
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+Please make sure to update tests as appropriate.
+
+### License
+
+[MIT](https://choosealicense.com/licenses/mit/)

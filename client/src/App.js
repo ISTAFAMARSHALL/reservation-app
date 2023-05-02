@@ -18,7 +18,7 @@ function App() {
 
   useEffect(() => {
     fetch("/me")
-    .then((r) => {
+    .then((response) => {
       if (response.ok) {
         response.json().then((data) => {
           setCurrentUser(data);

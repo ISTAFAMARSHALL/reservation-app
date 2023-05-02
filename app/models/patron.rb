@@ -1,7 +1,7 @@
 class Patron < ApplicationRecord
     has_secure_password
     
-    validates :name, :password, :password_confirmation, presence: true
+    validates :name, presence: true
     validates :phone_number, length: { is: 12 }
     validates :username, :email_address, uniqueness: true
 

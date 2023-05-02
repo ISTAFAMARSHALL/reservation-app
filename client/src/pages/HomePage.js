@@ -4,7 +4,6 @@ import PatronEditForm from "../components/PatronEditForm";
 function HomePage ({currentUser , setCurrentUser, setLoggedIn, handle_EditReservation}) {
 
     const [editAccount , setEdit] = useState(false)
-    const [editReservation , setEditReservation] = useState(false)
     const [view, setView] = useState(false)
     
     function handleDeleteAccount(){

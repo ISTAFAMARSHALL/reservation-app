@@ -27,10 +27,16 @@ function SignUpForm({ setLoggedIn, setSignedup , setCurrentUser}) {
         email_address,
         username,
         password,
-        password_confirmation: password_confirmation,
+        password_confirmation
       }),
     }).then((response) => {
       if (response.ok) {
+        console.log(        name,
+          phone_number,
+          email_address,
+          username,
+          password,
+          password_confirmation)
         response.json().then((user) => {
           setCurrentUser(user);
           setLoggedIn(true);
