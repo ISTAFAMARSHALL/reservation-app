@@ -3,5 +3,4 @@ class RestaurantSerializer < ActiveModel::Serializer
 
   has_many :reservations
   has_many :patrons, through: :reservations
-
 end

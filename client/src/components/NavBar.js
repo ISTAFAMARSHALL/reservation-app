@@ -28,14 +28,13 @@ function Navbar({setLoggedIn , setCurrentUser}) {
               to="/restaurants"
             ><button>View Restaurants</button></NavLink>
 
-        <NavLink className="button"
+          <NavLink className="button"
               exact
               to="/logout"
             ><button onClick={() => {
                 setLoggedIn(false)  
                 handleLogOut()}}>Logout</button>
-        </NavLink>
-        
+            </NavLink>
     </div>    
   )
 }

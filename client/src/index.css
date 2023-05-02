@@ -8,9 +8,10 @@ body {
   background-color: rgba(20,78,117,0.34);
 }
 
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-  monospace;
+    monospace;
 }
 
 #navbar {

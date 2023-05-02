@@ -3,5 +3,4 @@ class PatronSerializer < ActiveModel::Serializer
 
   has_many :reservations
   has_many :restaurants, through: :reservations
-  
 end

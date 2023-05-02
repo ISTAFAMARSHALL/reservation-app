@@ -10,8 +10,10 @@ function SignUpForm({ setLoggedIn, setSignedup , setCurrentUser}) {
   const [phone_number, setPhoneNumber] = useState("");
   const [email_address, setEmailAddress] = useState("");
   const [password, setPassword] = useState("");
-  const [password_confirmation, setPasswordConfirmation] = useState("");
+  const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [errors, setErrors] = useState([]);
+  
+
 
   function handleSignUp(e) {
     e.preventDefault();
@@ -27,7 +29,7 @@ function SignUpForm({ setLoggedIn, setSignedup , setCurrentUser}) {
         email_address,
         username,
         password,
-        password_confirmation: password_confirmation,
+        password_confirmation: passwordConfirmation,
       }),
     }).then((response) => {
       if (response.ok) {
@@ -99,7 +101,7 @@ function SignUpForm({ setLoggedIn, setSignedup , setCurrentUser}) {
         <input
           type="password"
           id="passwordConfirmation"
-          value={password_confirmation}
+          value={passwordConfirmation}
           onChange={(e) => setPasswordConfirmation(e.target.value)}
         />
       </div>
@@ -110,10 +112,11 @@ function SignUpForm({ setLoggedIn, setSignedup , setCurrentUser}) {
         </button>
       </div>
 
+
       <div>
         { errors.length <= 0 ? ("") : (
-                errors.map((e) => (
-          <li key={e}>{e}</li>
+                errors.map((err) => (
+          <li key={err}>{err}</li>
         )))}
       </div>
       
