@@ -31,6 +31,7 @@ function LoginForm({ setLoggedIn , setCurrentUser , setSignedup}) {
     });
   }
 
+
   return (
     <form onSubmit={handleLogin}>
       <div > 
@@ -61,8 +62,8 @@ function LoginForm({ setLoggedIn , setCurrentUser , setSignedup}) {
 
       <div>
       { errors.length <= 0 ? ("") : (
-                errors.map((e) => (
-          <li key={e}>{e}</li>
+                errors.map((err) => (
+          <li key={err}>{err}</li>
         )))}
       </div>
 

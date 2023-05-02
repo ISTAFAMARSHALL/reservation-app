@@ -18,9 +18,15 @@ function App() {
 
   useEffect(() => {
     fetch("/me")
+<<<<<<< HEAD
     .then((response) => {
       if (response.ok) {
         response.json().then((data) => {
+=======
+    .then((r) => {
+      if (r.ok) {
+        r.json().then((data) => {
+>>>>>>> 647d6219ff19f09b53a1dd11b4c766a16353ddb7
           setCurrentUser(data);
           setLoggedIn(true)});
     }});

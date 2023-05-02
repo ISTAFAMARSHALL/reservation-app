@@ -4,5 +4,4 @@ class Reservation < ApplicationRecord
 
     belongs_to :patron
     belongs_to :restaurant
-    
 end

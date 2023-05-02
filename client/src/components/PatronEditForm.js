@@ -87,8 +87,8 @@ function PatronEditForm({ currentUser , setCurrentUser, setEdit}) {
 
       <div>
         { errors.length <= 0 ? ("") : (
-                errors.map((e) => (
-          <li key={e}>{e}</li>
+                errors.map((err) => (
+          <li key={err}>{err}</li>
         )))}
       </div>
 
