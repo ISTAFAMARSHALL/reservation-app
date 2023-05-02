@@ -68,7 +68,7 @@ function LoginForm({ setLoggedIn , setCurrentUser , setSignedup}) {
       </div>
 
       <br></br>
-      <div> Don't Have an Account?
+      <div id='log_button'> Don't Have an Account?
         <button onClick={()=>setSignedup(false)} variant="fill" color="primary" >
           SignUp
         </button>

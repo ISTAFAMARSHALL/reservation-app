@@ -6,8 +6,10 @@ function Login({setCurrentUser, setLoggedIn}) {
     const [signedup, setSignedup] = useState(false);
   
     return (
-      <div>
-        <h1>Reservation App</h1>
+      <>
+      <h1>Reservation App</h1>
+      <div id='login'>
+        
         {/* <LoginForm /> */}
         {/* <SignUpForm setSignedup={setSignedup} signedup={signedup}/> */}
 
@@ -18,6 +20,7 @@ function Login({setCurrentUser, setLoggedIn}) {
         )}
 
       </div>
+      </>
     );
   }
   

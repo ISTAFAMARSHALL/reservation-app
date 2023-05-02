@@ -25,15 +25,9 @@ function HomePage ({currentUser , setCurrentUser, setLoggedIn, handle_EditReserv
           .then((user) => setCurrentUser(user))    
     }
 
-    // function handle_EditReservation(r){
-        
-    //         console.log(r)
-    //         history.push(`/edit_reservation/${r.id}`)
-    // }
-
     return (
         <main>
-        <h3>Welcome! {currentUser.name}</h3>
+        <h3>Hello {currentUser.name}!</h3>
         {!editAccount ? (
             <div>
                  <p>{currentUser.phone_number}</p>

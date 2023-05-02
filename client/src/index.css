@@ -93,6 +93,7 @@ h2 {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 50px;
   }
 
   ol {
@@ -115,5 +116,12 @@ h2 {
 
   #newReservation {
     margin-top: 100px;
-  
+  }
+
+  #login {
+    margin-top: 200px;
+  }
+
+  #log_button {
+    margin-top: 100px;
   }
