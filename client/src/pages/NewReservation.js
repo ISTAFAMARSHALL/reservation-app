@@ -110,8 +110,8 @@ function NewReservation({ currentUser , setCurrentUser}) {
 
     <div>
         { errors.length <= 0 ? ("") : (
-            errors.map((err) => (
-              <li key={err}>{err}</li>
+            errors.map((e) => (
+              <li key={e}>{e}</li>
         )))}
     </div>
 

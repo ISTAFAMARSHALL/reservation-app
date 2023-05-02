@@ -6,7 +6,9 @@ class CreatePatrons < ActiveRecord::Migration[7.0]
       t.string :email_address
       t.string :username
       t.string :password_digest
-      t.string :passwordConfirmation
+      t.string :password_reset_token
+      t.string :password_reset_sent_at
+      t.string :password_confirmation
 
       t.timestamps
     end

@@ -31,7 +31,7 @@ class PatronsController < ApplicationController
     private
 
     def patron_params
-        params.permit(:name,:phone_number,:email_address,:username,:password,:passwordConfirmation)
+        params.permit(:name,:phone_number,:email_address,:username,:password,:password_confirmation)
     end
     
 end

@@ -9,9 +9,6 @@ function Login({setCurrentUser, setLoggedIn}) {
       <>
       <h1>Reservation App</h1>
       <div id='login'>
-        
-        {/* <LoginForm /> */}
-        {/* <SignUpForm setSignedup={setSignedup} signedup={signedup}/> */}
 
         {signedup ? (
           <LoginForm setLoggedIn={setLoggedIn} setSignedup={setSignedup} setCurrentUser={setCurrentUser}/>
@@ -23,7 +20,5 @@ function Login({setCurrentUser, setLoggedIn}) {
       </>
     );
   }
-  
-
   
   export default Login;

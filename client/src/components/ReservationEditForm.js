@@ -3,29 +3,14 @@ import { useHistory, useParams } from 'react-router-dom';
 
 function ReservationEditForm({ currentUser , setCurrentUser , newR}) {
 
-  // console.log(newR.id)
-
     const history = useHistory()
-
-  //   const reservation_id = useParams()
-
-    // let reservation_to_update = currentUser.reservations.filter((r) => r.id == reservation_id.id)
-
 
     const [name, setReservationName] = useState(newR.name);
     const [number_of_guests, setReservationGuest] = useState(newR.number_of_guests);
     const [time, setReservationTime] = useState(newR.time);
     const [day, setReservationDay] = useState(newR.day)
 
-
-
     const [errors, setErrors] = useState([])
-
-    // const newReservationInfo ={
-    //     name: reservationName,
-    //     number_of_guests: reservationGuest,
-    //     time: reservationTime,
-    //   }
  
     function handleEditReservation(e) {
       
@@ -107,11 +92,10 @@ function ReservationEditForm({ currentUser , setCurrentUser , newR}) {
 
     <div>
         { errors.length <= 0 ? ("") : (
-            errors.map((err) => (
-              <li key={err}>{err}</li>
+            errors.map((e) => (
+              <li key={e}>{e}</li>
         )))}
     </div>
-
 
     <button type="submit" value="Save">Update Reservation</button>
 
