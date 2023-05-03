@@ -8,6 +8,7 @@
 
 Restaurant.destroy_all
 Patron.destroy_all
+Reservation.destroy_all
 
 10.times do |index|
     Restaurant.create!(name: Faker::Restaurant.unique.name, cuisine: Faker::Restaurant.type, description: Faker::Restaurant.unique.description)

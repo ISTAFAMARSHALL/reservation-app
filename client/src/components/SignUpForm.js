@@ -118,7 +118,6 @@ function SignUpForm({ setLoggedIn, setSignedup , setCurrentUser}) {
         </button>
       </div>
 
-
       <div>
         { errors.length <= 0 ? ("") : (
                 errors.map((err) => (

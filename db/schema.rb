@@ -20,11 +20,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_18_011935) do
     t.string "email_address"
     t.string "username"
     t.string "password_digest"
-<<<<<<< HEAD
     t.string "password_confirmation"
-=======
-    t.string "passwordConfirmation"
->>>>>>> 647d6219ff19f09b53a1dd11b4c766a16353ddb7
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

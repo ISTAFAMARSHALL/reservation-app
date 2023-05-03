@@ -1,12 +1,7 @@
 import { useState } from "react";
-import { useHistory } from 'react-router-dom';
-import {NavLink} from 'react-router-dom'
 import PatronEditForm from "../components/PatronEditForm";
-import ReservationEditForm from "../components/ReservationEditForm"
 
 function HomePage ({currentUser , setCurrentUser, setLoggedIn, handle_EditReservation}) {
-
-    const history = useHistory()
 
     const [editAccount , setEdit] = useState(false)
     const [view, setView] = useState(false)
