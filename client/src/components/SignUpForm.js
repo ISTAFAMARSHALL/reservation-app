@@ -42,7 +42,7 @@ function SignUpForm({ setLoggedIn, setSignedup , setCurrentUser}) {
         response.json().then((user) => {
           setCurrentUser(user);
           setLoggedIn(true);
-          history.push("/");
+          history.push("/me");
         });
       } else {
         response.json().then((e) => setErrors(e.errors));
