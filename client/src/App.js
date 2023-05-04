@@ -49,7 +49,7 @@ function App() {
                 <NewReservation currentUser={currentUser} setCurrentUser={setCurrentUser}/>
               </Route>
 
-              <Route path="/restaurants">
+              <Route path="/restaurants ">
                 <RestaurantList/>
               </Route>
             
