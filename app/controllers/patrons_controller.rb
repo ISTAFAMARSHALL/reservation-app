@@ -8,13 +8,7 @@ class PatronsController < ApplicationController
     end
 
     def show
-        # render json: @current_user
-        user = User.find_by(id: session[:user_id])
-        if user
-          render json: user
-        else
-          render json: { error: "Not authorized" }, status: :unauthorized
-        end
+        render json: @current_user
     end
 
     def create
