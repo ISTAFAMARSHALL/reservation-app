@@ -12,7 +12,7 @@ class PatronsController < ApplicationController
     end
 
     def create
-        patron = Patron.create!(patron_params)
+        patron = Patron.create!(patron_params).authenticate(params[:password])
         session[:user_id] ||= patron.id
         render json: patron, status: :created
     end
