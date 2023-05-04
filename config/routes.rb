@@ -3,17 +3,21 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-
+   
     get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
 
-    resources :patrons
-    resources :reservations
-    resources :restaurants
+      namespace :api do
 
-    post "/signup", to: "patrons#create"
-    get "/me", to: "patrons#show"
+      resources :patrons
+      resources :reservations
+      resources :restaurants
 
-    post "/login", to: "sessions#create"
-    delete "/logout", to: "sessions#destroy"
+      post "/signup", to: "patrons#create"
+      get "/me", to: "patrons#show"
+
+      post "/login", to: "sessions#create"
+      delete "/logout", to: "sessions#destroy"
      
+    end
+
 end
