@@ -52,8 +52,8 @@ function App() {
               <Route path="/restaurants">
                 <RestaurantList/>
               </Route>
-
-              <Route path="/me">
+            
+              <Route path="/">
                 <HomePage currentUser={currentUser} setCurrentUser={setCurrentUser} setLoggedIn={setLoggedIn} handle_EditReservation={handle_EditReservation}/>
               </Route>
 
