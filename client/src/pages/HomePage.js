@@ -18,7 +18,7 @@ function HomePage ({currentUser , setCurrentUser, setLoggedIn, handle_EditReserv
           .then((r) => r.json())
           .then((user) => setCurrentUser(user))    
     }
-
+    
     return (
         <main>
         <h3>Hello {currentUser.name}!</h3>

@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
 
+    get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
+
     resources :patrons
     resources :reservations
     resources :restaurants
@@ -14,7 +16,4 @@ Rails.application.routes.draw do
     post "/login", to: "sessions#create"
     delete "/logout", to: "sessions#destroy"
 
-
-    # get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
-  
 end
