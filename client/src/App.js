@@ -53,7 +53,7 @@ function App() {
                 <RestaurantList/>
               </Route>
 
-              <Route path="/">
+              <Route path="/me">
                 <HomePage currentUser={currentUser} setCurrentUser={setCurrentUser} setLoggedIn={setLoggedIn} handle_EditReservation={handle_EditReservation}/>
               </Route>
 
