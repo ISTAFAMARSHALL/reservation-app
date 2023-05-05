@@ -13,6 +13,7 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false)
   const [currentUser, setCurrentUser] = useState([])
   const [newR, setNewR] = useState([])
+  const [restaurants, Setrestaurants] = useState([]);
 
   const history = useHistory()
 
@@ -31,6 +32,19 @@ function App() {
     setNewR(r)
 }
 
+useEffect(() => {
+  fetch("/restaurants")
+  .then((response) => {
+      if (response.ok) {
+        response.json().then((data) => {
+          Setrestaurants(data);
+        });
+      } else {
+        // response.json().then((e) => setErrors(e.errors));
+      }
+    });
+}, []);
+
   return (
       <div>
         {!loggedIn ? (
@@ -46,11 +60,11 @@ function App() {
               </Route>
 
               <Route path="/new">
-                <NewReservation currentUser={currentUser} setCurrentUser={setCurrentUser}/>
+                <NewReservation currentUser={currentUser} setCurrentUser={setCurrentUser} restaurants={restaurants}/>
               </Route>
 
               <Route path="/restaurants">
-                <RestaurantList/>
+                <RestaurantList restaurants={restaurants}/>
               </Route>
             
               <Route path="/">

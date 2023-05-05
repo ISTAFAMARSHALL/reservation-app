@@ -1,7 +1,7 @@
 import { useEffect , useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
-function NewReservation({ currentUser , setCurrentUser}) {
+function NewReservation({ currentUser , setCurrentUser, restaurants}) {
 
     const history = useHistory()
 
@@ -11,7 +11,7 @@ function NewReservation({ currentUser , setCurrentUser}) {
     const [reservationTime, setReservationTime] = useState("");
     const [reservationRestaurantId, setReservationRestaurantId] = useState("");
 
-    const [restaurants, Setrestaurants] = useState([]);
+    // const [restaurants, Setrestaurants] = useState([]);
     const [errors, setErrors] = useState([])
 
     const newReservationInfo ={
@@ -23,11 +23,11 @@ function NewReservation({ currentUser , setCurrentUser}) {
         restaurant_id: reservationRestaurantId,
       }
 
-      useEffect(() => {
-          fetch("/restaurants")
-            .then((r) => r.json())
-            .then((data) => Setrestaurants(data));
-        }, []);
+      // useEffect(() => {
+      //     fetch("/restaurants")
+      //       .then((r) => r.json())
+      //       .then((data) => Setrestaurants(data));
+      //   }, []);
 
     function handleNewReservations(e) {
         e.preventDefault();
