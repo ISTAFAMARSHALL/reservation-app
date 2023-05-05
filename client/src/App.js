@@ -43,7 +43,7 @@ useEffect(() => {
         // response.json().then((e) => setErrors(e.errors));
       }
     });
-}, []);
+}, [setCurrentUser]);
 
   return (
       <div>
