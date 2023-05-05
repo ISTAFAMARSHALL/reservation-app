@@ -1,23 +1,23 @@
-// import { useState } from "react";
-// import { useEffect } from "react";
+import { useState } from "react";
+import { useEffect } from "react";
 
-function RestaurantList ({restaurants}) {
+function RestaurantList () {
 
-    // const [restaurants, Setrestaurants] = useState([]);
-    // const [errors, setErrors] = useState([])
+    const [restaurants, Setrestaurants] = useState([]);
+    const [errors, setErrors] = useState([])
 
-    // useEffect(() => {
-    //     fetch("/restaurants")
-    //     .then((response) => {
-    //         if (response.ok) {
-    //           response.json().then((data) => {
-    //             Setrestaurants(data);
-    //           });
-    //         } else {
-    //           response.json().then((e) => setErrors(e.errors));
-    //         }
-    //       });
-    //   }, []);
+    useEffect(() => {
+        fetch("/restaurants")
+        .then((response) => {
+            if (response.ok) {
+              response.json().then((data) => {
+                Setrestaurants(data);
+              });
+            } else {
+              response.json().then((e) => setErrors(e.errors));
+            }
+          });
+      }, []);
       
       let displayRestaurants = restaurants.map((r) => (
         <div key={r.name}>
@@ -41,12 +41,12 @@ function RestaurantList ({restaurants}) {
             <br></br>
             {displayRestaurants}
 
-            {/* <div>
+            <div>
                 { errors.length <= 0 ? ("") : (
                         errors.map((err) => (
                 <li key={err}>{err}</li>
                 )))}
-            </div> */}
+            </div>
 
         </>
 
