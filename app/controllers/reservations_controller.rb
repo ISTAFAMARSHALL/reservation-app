@@ -16,8 +16,8 @@ class ReservationsController < ApplicationController
     end
 
     def update
-        # reservation = Reservation.find(params[:id])
-        updated_reservation = @current_user.reservations.update!(reservation_params)
+        reservation = Reservation.find(params[:id])
+        updated_reservation = reservation.update!(reservation_params)
         render json: @current_user, status: :accepted
     end
 
