@@ -17,7 +17,7 @@ class ReservationsController < ApplicationController
 
     def update
         reservation = Reservation.find(params[:id])
-        updated_reservation = reservation.update!(reservation_params)
+        updated_reservation = reservation.update!(update_reservation_params)
         render json: @current_user, status: :accepted
     end
 
@@ -31,6 +31,10 @@ class ReservationsController < ApplicationController
 
     def reservation_params
         params.permit(:name, :number_of_guests, :day, :time, :restaurant_id )
+    end
+
+    def update_reservation_params
+        params.permit(:name, :number_of_guests, :day, :time)
     end
     
 end
