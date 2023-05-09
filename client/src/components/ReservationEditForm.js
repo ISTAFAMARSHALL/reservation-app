@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
-function ReservationEditForm({ setCurrentUser , newR}) {
+function ReservationEditForm({ currentUser, setCurrentUser , newR}) {
 
     const history = useHistory()
 
@@ -29,8 +29,23 @@ function ReservationEditForm({ setCurrentUser , newR}) {
           }),
         }).then((response) => {
           if (response.ok) {
-            response.json().then((user) => {
-              setCurrentUser(user)
+            response.json().then((data) => {
+
+              let updated_reservations = currentUser.reservations.filter((e) => e.id !== data.id)
+
+              const updatedUser = {
+                id: currentUser.id,
+                name: currentUser.name,
+                phone_number: currentUser.phone_number,
+                email_address: currentUser.email_address,
+                username: currentUser.username,
+                password_digest: currentUser.password_digest,
+                password_confirmation: currentUser.password_confirmation,
+                reservations: [... updated_reservations, data ],
+                restaurants: [... currentUser.restaurants, data.restaurant ]
+              }
+              
+              setCurrentUser(updatedUser)
               history.push("/")
             });
           } else {
