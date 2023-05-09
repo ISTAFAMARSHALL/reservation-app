@@ -32,7 +32,7 @@ function NewReservation({ currentUser , setCurrentUser}) {
     function handleNewReservations(e) {
         e.preventDefault();
 
-        fetch("reservations", {
+        fetch("/reservations", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -104,7 +104,7 @@ function NewReservation({ currentUser , setCurrentUser}) {
             <option value="Thursday">Thursday</option>
             <option value="Friday">Friday</option>
             <option value="Saturday">Saturday</option>
-            <option value="SSunday">Sunday</option>
+            <option value="Sunday">Sunday</option>
         </select>
     </div>
 
