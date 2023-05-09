@@ -50,8 +50,8 @@ function NewReservation({ currentUser , setCurrentUser}) {
                 username: currentUser.username,
                 password_digest: currentUser.password_digest,
                 password_confirmation: currentUser.password_confirmation,
-                reservations: [... currentUser.reservations, data ],
-                restaurants: [... currentUser.restaurants, data.restaurant ]
+                reservations: [...currentUser.reservations, data ],
+                restaurants: [...currentUser.restaurants, data.restaurant ]
               }
 
               setCurrentUser(updatedUser)

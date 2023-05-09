@@ -29,8 +29,8 @@ function HomePage ({currentUser , setCurrentUser, setLoggedIn, handle_EditReserv
               username: currentUser.username,
               password_digest: currentUser.password_digest,
               password_confirmation: currentUser.password_confirmation,
-              reservations: [... updated_reservations],
-              restaurants: [... updated_restaurants]
+              reservations: [...updated_reservations],
+              restaurants: [...updated_restaurants]
             }
             
             setCurrentUser(updatedUser)
