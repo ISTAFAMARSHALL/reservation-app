@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useState , useContext} from "react";
 import PatronEditForm from "../components/PatronEditForm";
+import { UserContext } from "../context/user";
 
-function HomePage ({currentUser , setCurrentUser, setLoggedIn, handle_EditReservation}) {
+function HomePage ({ setLoggedIn, handle_EditReservation}) {
+
+    const {currentUser , setCurrentUser} = useContext(UserContext);
 
     const [editAccount , setEdit] = useState(false)
     const [view, setView] = useState(false)

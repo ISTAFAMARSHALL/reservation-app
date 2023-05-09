@@ -1,4 +1,5 @@
-import { useEffect , useState} from "react";
+import { useEffect , useState, useContext} from "react";
+import React from 'react';
 import { Route, Switch} from "react-router-dom"
 import { useHistory } from 'react-router-dom';
 import Login from "./pages/Login"
@@ -7,13 +8,14 @@ import RestaurantList from "./pages/RestaurantList"
 import NewReservation from "./pages/NewReservation"
 import NavBar from "./components/NavBar"
 import ReservationEditForm from "./components/ReservationEditForm"
-import { UserProvider } from "./context/user";
+import { UserContext } from "./context/user";
+
 
 function App() {
 
   const [loggedIn, setLoggedIn] = useState(false)
-  const [currentUser, setCurrentUser] = useState([])
   const [newR, setNewR] = useState([])
+  const {setCurrentUser} = useContext(UserContext);
 
   const history = useHistory()
 
@@ -34,21 +36,21 @@ function App() {
 
   return (
       <div>
-        <UserProvider>
+        
         {!loggedIn ? (
-            <Login setCurrentUser={setCurrentUser} setLoggedIn={setLoggedIn}/>
+            <Login setLoggedIn={setLoggedIn}/>
         ) : (
           <>
             <h1>Reservation App</h1>
-            <NavBar setLoggedIn={setLoggedIn} setCurrentUser={setCurrentUser} />
+            <NavBar setLoggedIn={setLoggedIn} />
             <Switch>
 
               <Route path="/edit_reservation/">
-                <ReservationEditForm currentUser={currentUser} setCurrentUser={setCurrentUser} newR={newR}/>
+                <ReservationEditForm newR={newR}/>
               </Route>
 
               <Route path="/new">
-                <NewReservation currentUser={currentUser} setCurrentUser={setCurrentUser}/>
+                <NewReservation />
               </Route>
 
               <Route path="/restaurants">
@@ -56,13 +58,13 @@ function App() {
               </Route>
             
               <Route path="/">
-                <HomePage currentUser={currentUser} setCurrentUser={setCurrentUser} setLoggedIn={setLoggedIn} handle_EditReservation={handle_EditReservation}/>
+                <HomePage setLoggedIn={setLoggedIn} handle_EditReservation={handle_EditReservation}/>
               </Route>
 
             </Switch>
           </>
         )}  
-        </UserProvider>
+        
       </div>
   );
 }

@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useState , useContext} from "react";
 import { useHistory } from 'react-router-dom';
+import { UserContext } from "../context/user";
 
-function SignUpForm({ setLoggedIn, setSignedup , setCurrentUser}) {
+function SignUpForm({ setLoggedIn, setSignedup }) {
+
+  const {setCurrentUser} = useContext(UserContext);
 
   const history = useHistory()
 
@@ -13,7 +16,6 @@ function SignUpForm({ setLoggedIn, setSignedup , setCurrentUser}) {
   const [password_confirmation, setPasswordConfirmation] = useState("");
   const [errors, setErrors] = useState([]);
   
-
 
   function handleSignUp(e) {
     e.preventDefault();

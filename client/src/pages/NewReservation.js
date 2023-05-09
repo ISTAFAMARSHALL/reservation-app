@@ -1,7 +1,9 @@
-import { useEffect , useState } from 'react';
+import { useEffect , useState , useContext} from 'react';
 import { useHistory } from 'react-router-dom';
+import { UserContext } from "../context/user";
 
-function NewReservation({ currentUser , setCurrentUser}) {
+function NewReservation() {
+    const {currentUser , setCurrentUser} = useContext(UserContext);
 
     const history = useHistory()
 

@@ -2,7 +2,7 @@ import { useState } from "react";
 import LoginForm from "../components/LoginForm";
 import SignUpForm from "../components/SignUpForm";
 
-function Login({setCurrentUser, setLoggedIn}) {
+function Login({ setLoggedIn}) {
     const [signedup, setSignedup] = useState(false);
   
     return (
@@ -11,9 +11,9 @@ function Login({setCurrentUser, setLoggedIn}) {
       <div id='login'>
 
         {signedup ? (
-          <LoginForm setLoggedIn={setLoggedIn} setSignedup={setSignedup} setCurrentUser={setCurrentUser}/>
+          <LoginForm setLoggedIn={setLoggedIn} setSignedup={setSignedup}/>
         ) : (
-          <SignUpForm setLoggedIn={setLoggedIn} setSignedup={setSignedup} setCurrentUser={setCurrentUser}/>
+          <SignUpForm setLoggedIn={setLoggedIn} setSignedup={setSignedup}/>
         )}
 
       </div>

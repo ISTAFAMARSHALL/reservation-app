@@ -1,8 +1,11 @@
-import { useState } from 'react';
+import { useState , useContext } from 'react';
 import { useHistory } from 'react-router-dom';
+import { UserContext } from "../context/user";
 
-function ReservationEditForm({ currentUser, setCurrentUser , newR}) {
+function ReservationEditForm({ newR }) {
 
+    const {currentUser , setCurrentUser} = useContext(UserContext);
+    
     const history = useHistory()
 
     const [name, setReservationName] = useState(newR.name);

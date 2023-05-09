@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useState , useContext} from "react";
 import { useHistory } from 'react-router-dom';
+import { UserContext } from "../context/user";
 
-function PatronEditForm({ currentUser , setCurrentUser, setEdit}) {
+function PatronEditForm({ setEdit }) {
+
+  const {currentUser , setCurrentUser} = useContext(UserContext)
 
   const history = useHistory()
 
