@@ -40,8 +40,21 @@ function NewReservation({ currentUser , setCurrentUser}) {
           body: JSON.stringify(newReservationInfo)
         }).then((response) => {
           if (response.ok) {
-            response.json().then((user) => {
-              setCurrentUser(user)
+            response.json().then((data) => {
+
+              const updatedUser = {
+                id: currentUser.id,
+                name: currentUser.name,
+                phone_number: currentUser.phone_number,
+                email_address: currentUser.email_address,
+                username: currentUser.username,
+                password_digest: currentUser.password_digest,
+                password_confirmation: currentUser.password_confirmation,
+                reservations: [... currentUser.reservations, data ],
+                restaurants: [... currentUser.restaurants, data.restaurant ]
+              }
+
+              setCurrentUser(updatedUser)
               history.push("/")
             });
           } else {

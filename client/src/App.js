@@ -26,6 +26,8 @@ function App() {
     }});
   }, [setCurrentUser]);
 
+  console.log(currentUser)
+
   function handle_EditReservation(r){
     history.push(`/edit_reservation/`)
     setNewR(r)

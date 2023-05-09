@@ -12,19 +12,19 @@ class ReservationsController < ApplicationController
 
     def create
         reservation = @current_user.reservations.create!(reservation_params)
-        render json: @current_user, status: :created
+        render json: reservation, status: :created
     end
 
     def update
         reservation = Reservation.find(params[:id])
         updated_reservation = reservation.update!(update_reservation_params)
-        render json: @current_user, status: :accepted
+        render json: reservation, status: :accepted
     end
 
     def destroy
         reservation = Reservation.find(params[:id])
         reservation.destroy
-        render json: @current_user
+        render json: reservation
     end
 
     private
