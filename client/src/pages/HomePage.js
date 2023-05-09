@@ -16,7 +16,25 @@ function HomePage ({currentUser , setCurrentUser, setLoggedIn, handle_EditReserv
     function handleDeleteReservation(e){
         fetch(`/reservations/${e}`, { method: "DELETE" })
           .then((r) => r.json())
-          .then((user) => setCurrentUser(user))    
+          .then((data) => {
+
+            let updated_reservations = currentUser.reservations.filter((e) => e.id !== data.id)
+            let updated_restaurants = currentUser.restaurants.filter((e) => e.id !== data.restaurant.id)
+            
+            const updatedUser = {
+              id: currentUser.id,
+              name: currentUser.name,
+              phone_number: currentUser.phone_number,
+              email_address: currentUser.email_address,
+              username: currentUser.username,
+              password_digest: currentUser.password_digest,
+              password_confirmation: currentUser.password_confirmation,
+              reservations: [... updated_reservations],
+              restaurants: [... updated_restaurants]
+            }
+            
+            setCurrentUser(updatedUser)
+        })    
     }
     
     return (
