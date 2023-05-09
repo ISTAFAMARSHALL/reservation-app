@@ -7,6 +7,7 @@ import RestaurantList from "./pages/RestaurantList"
 import NewReservation from "./pages/NewReservation"
 import NavBar from "./components/NavBar"
 import ReservationEditForm from "./components/ReservationEditForm"
+import { UserProvider } from "./context/user";
 
 function App() {
 
@@ -33,6 +34,7 @@ function App() {
 
   return (
       <div>
+        <UserProvider>
         {!loggedIn ? (
             <Login setCurrentUser={setCurrentUser} setLoggedIn={setLoggedIn}/>
         ) : (
@@ -60,6 +62,7 @@ function App() {
             </Switch>
           </>
         )}  
+        </UserProvider>
       </div>
   );
 }
