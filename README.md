@@ -9,7 +9,7 @@ Create an account to make and edit reservations at great restaurants near you!
 
 ### Installation
 
-This project was created with rails and deplyed using Render
+This project was created with rails and deployed using Render https://reservation-app-9kyh.onrender.com
 
 1. Fork and clone this repo
 
@@ -31,7 +31,7 @@ This will run your server on port
 
 ### Usage
 
-Organize and rate your favorite beauty products within one app.
+Make edit track and cancel reservations with local restaurants
 
 ### Contributing
 
