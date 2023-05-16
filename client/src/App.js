@@ -10,7 +10,6 @@ import NavBar from "./components/NavBar"
 import ReservationEditForm from "./components/ReservationEditForm"
 import { UserContext } from "./context/user";
 
-
 function App() {
 
   const [loggedIn, setLoggedIn] = useState(false)

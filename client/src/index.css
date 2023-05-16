@@ -125,3 +125,8 @@ h2 {
   #log_button {
     margin-top: 100px;
   }
+
+  #addrestaurant {
+    float: right;
+    margin-left: -1000px;
+  }

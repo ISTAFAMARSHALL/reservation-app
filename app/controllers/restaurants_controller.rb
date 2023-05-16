@@ -10,10 +10,10 @@ class RestaurantsController < ApplicationController
     #     render json: restaurant, status: :ok
     # end
 
-    # def create
-    #     restaurant = Restaurant.create!(restaurant_params)
-    #     render json: restaurant, status: :created
-    # end
+    def create
+        restaurant = Restaurant.create!(restaurant_params)
+        render json: restaurant, status: :created
+    end
     
     # def update
     #     restaurant = Restaurant.find(params[:id])
@@ -27,10 +27,10 @@ class RestaurantsController < ApplicationController
     #     head :no_content
     # end
 
-    # private
+    private
 
-    # def restaurant_params
-    #     params.permit(:name, :cuisine, :description)
-    # end
+    def restaurant_params
+        params.permit(:name, :cuisine, :description)
+    end
     
 end

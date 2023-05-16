@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { useEffect } from "react";
+import NewRestaurant from "./NewRestaurant";
 
 function RestaurantList () {
 
-    const [restaurants, Setrestaurants] = useState([]);
+    const [restaurants, setrestaurants] = useState([]);
+    const [addRestaurant, setAddRestaurant] = useState(false);
     const [errors, setErrors] = useState([])
 
     useEffect(() => {
@@ -11,16 +13,16 @@ function RestaurantList () {
         .then((response) => {
             if (response.ok) {
               response.json().then((data) => {
-                Setrestaurants(data);
+                setrestaurants(data);
               });
             } else {
               response.json().then((e) => setErrors(e.errors));
             }
           });
-      }, []);
+      }, [setrestaurants]);
       
       let displayRestaurants = restaurants.map((r) => (
-        <div key={r.name}>
+        <div key={r.id}>
             
             <br></br>
             <h3>{r.name}</h3>
@@ -38,7 +40,11 @@ function RestaurantList () {
             <h5>Restaurants</h5>
             <h5>Below</h5>
             <br></br>
+            <button id='addrestaurant' onClick={()=>setAddRestaurant(!addRestaurant)}>Add New Restaurant</button>
             <br></br>
+            {addRestaurant ? (
+              <NewRestaurant restaurants={restaurants} setrestaurants={setrestaurants} addRestaurant={addRestaurant} setAddRestaurant={setAddRestaurant}/> 
+            ) : ( "")}
             {displayRestaurants}
 
             <div>
