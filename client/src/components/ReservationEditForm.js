@@ -45,7 +45,7 @@ function ReservationEditForm({ newR }) {
                 password_digest: currentUser.password_digest,
                 password_confirmation: currentUser.password_confirmation,
                 reservations: [...updated_reservations, data ],
-                restaurants: [...currentUser.restaurants, data.restaurant ]
+                restaurants: currentUser.restaurants
               }
               
               setCurrentUser(updatedUser)
