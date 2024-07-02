@@ -6,10 +6,11 @@ Rails.application.routes.draw do
    
       get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
 
+      get '/many_res/:amount', to: 'restaurants#many_res' 
     
       resources :patrons
       resources :reservations
-      resources :restaurants
+      resources :restaurantss
 
       post "/signup", to: "patrons#create"
       get "/me", to: "patrons#show"
@@ -18,3 +19,6 @@ Rails.application.routes.draw do
       delete "/logout", to: "sessions#destroy"
 
 end
+
+
+# return the rest with at leat the given number of reservations

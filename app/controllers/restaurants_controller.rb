@@ -15,6 +15,11 @@ class RestaurantsController < ApplicationController
         render json: restaurant, status: :created
     end
     
+    def many_res
+        restaurants = Restaurant.all.select{|restaurant| restaurant.reservations.count.to_s >= params[:amount]}
+        render json: restaurants
+    end
+
     # def update
     #     restaurant = Restaurant.find(params[:id])
     #     updated_restaurant = restaurant.update(restaurant_params)
