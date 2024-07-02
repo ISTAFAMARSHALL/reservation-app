@@ -80,12 +80,12 @@ test:
 # Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
 # for a full overview on how database connection configuration can be specified.
 #
-# production:
-#   <<: *default
-#   database: reservation_database_855a
-#   username: reservation_database_855a_user
-#   password: <%= 5Cimbc4EQXYF7mKciHEqnSL39VkLru1G %>
-
 production:
   <<: *default
-  url: <%= ENV['DATABASE_PASSWPRD'] %>
+  database: reservation_database_855a
+  username: reservation_database_855a_user
+  password: <%= ENV[DATABASE_PASSWPRD] %>
+
+# production:
+#   <<: *default
+#   url: <%= ENV['DATABASE_PASSWPRD'] %>
